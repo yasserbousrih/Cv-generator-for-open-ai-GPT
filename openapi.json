@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CV Generator",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/generate-pdf": {
+            "post": {
+                "summary": "Generate a CV PDF",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {"type": "string"},
+                                    "phone": {"type": "string"},
+                                    "email": {"type": "string"},
+                                    "location": {"type": "string"},
+                                    "linkedin": {"type": "string"},
+                                    "portfolio": {"type": "string"},
+                                    "summary": {"type": "string"},
+                                    "skills": {"type": "array", "items": {"type": "string"}},
+                                    "experiences": {"type": "array", "items": {"type": "object"}},
+                                    "educations": {"type": "array", "items": {"type": "object"}},
+                                    "projects": {"type": "array", "items": {"type": "object"}},
+                                    "additional_info": {"type": "array", "items": {"type": "string"}}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PDF URL",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
